@@ -3,7 +3,7 @@
 # <> Version modified by Elixir Client
 
 
-# - Versão em PT-BR (corrigido):
+# - Versão em PT-BR:
 
 -> Esta Orion Library foi obtida do desenvolvedor original e modificada. Está liberada para vocês, iniciantes na criação de scripts, e está totalmente funcional. :)
 
