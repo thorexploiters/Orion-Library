@@ -1,7 +1,4 @@
-# Orion-Library
-
-# <> Version modified by Elixir Client
-
+# Orion-Library // Version modified by Elixir Client
 
 # - Versão em PT-BR:
 
