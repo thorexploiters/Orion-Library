@@ -401,7 +401,7 @@ function OrionLib:MakeNotification(NotificationConfig)
 	spawn(function()
 		NotificationConfig.Name = NotificationConfig.Name or "Notification"
 		NotificationConfig.Content = NotificationConfig.Content or "Test"
-		NotificationConfig.Image = NotificationConfig.Image or "rbxassetid://14229447778"
+		NotificationConfig.Image = NotificationConfig.Image or "rbxassetid://72671288986713"
 		NotificationConfig.Time = NotificationConfig.Time or 15
 
 		local NotificationParent = SetProps(MakeElement("TFrame"), {
@@ -491,8 +491,8 @@ function OrionLib:MakeWindow(WindowConfig)
 	WindowConfig.IntroText = WindowConfig.IntroText or "Thor Hub /\ Nice Scripts!"
 	WindowConfig.CloseCallback = WindowConfig.CloseCallback or function() end
 	WindowConfig.ShowIcon = WindowConfig.ShowIcon or false
-	WindowConfig.Icon = WindowConfig.Icon or "rbxassetid://14229447778"
-	WindowConfig.IntroIcon = WindowConfig.IntroIcon or "rbxassetid://14229447778"
+	WindowConfig.Icon = WindowConfig.Icon or "rbxassetid://72671288986713"
+	WindowConfig.IntroIcon = WindowConfig.IntroIcon or "rbxassetid://72671288986713"
 	WindowConfig.SearchBar = WindowConfig.SearchBar or nil
 	OrionLib.Folder = WindowConfig.ConfigFolder
 	OrionLib.SaveCfg = WindowConfig.SaveConfig
