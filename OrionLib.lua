@@ -1,5 +1,3 @@
-
-
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
@@ -406,7 +404,7 @@ function OrionLib:MakeNotification(NotificationConfig)
 			Position = UDim2.new(1, -55, 0, 0),
 			BackgroundTransparency = 0,
 			AutomaticSize = Enum.AutomaticSize.Y
-		}), {
+		}, {
 			MakeElement("Stroke", Color3.fromRGB(93, 93, 93), 1.2),
 			MakeElement("Padding", 12, 12, 12, 12),
 			SetProps(MakeElement("Image", NotificationConfig.Image), {
@@ -1514,9 +1512,7 @@ function OrionLib:MakeWindow(WindowConfig)
 					Size = UDim2.new(0, 24, 0, 24),
 					Position = UDim2.new(1, -12, 0.5, 0),
 					AnchorPoint = Vector2.new(1, 0.5)
-				}), {
-					AddThemeObject(MakeElement("Stroke"), "Stroke")
-				}), "Main")
+				})
 
 				local ColorpickerFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
 					Size = UDim2.new(1, 0, 0, 38),
@@ -1724,5 +1720,54 @@ end
 function OrionLib:Destroy()
 	Orion:Destroy()
 end
+
+local SearchBar = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
+    Size = UDim2.new(1, -50, 0, 35),
+    Position = UDim2.new(0, 25, 0, 55),
+    Parent = MainWindow
+}), {
+    AddThemeObject(SetProps(MakeElement("Label", "Buscar script", 14), {
+        Position = UDim2.new(0, 12, 0, 0),
+        Size = UDim2.new(1, -12, 1, 0),
+        Font = Enum.Font.GothamBold,
+        TextTransparency = 0.4,
+        TextXAlignment = Enum.TextXAlignment.Left,
+        Name = "SearchText"
+    }), "TextDark"),
+    AddThemeObject(Create("TextBox", {
+        Size = UDim2.new(1, -20, 1, 0),
+        Position = UDim2.new(0, 10, 0, 0),
+        BackgroundTransparency = 1,
+        TextColor3 = Color3.fromRGB(255, 255, 255),
+        PlaceholderColor3 = Color3.fromRGB(210, 210, 210),
+        PlaceholderText = "Input",
+        Font = Enum.Font.GothamSemibold,
+        TextXAlignment = Enum.TextXAlignment.Left,
+        TextSize = 14,
+        Name = "SearchInput"
+    }), "Text"),
+    AddThemeObject(MakeElement("Stroke"), "Stroke")
+}), "Second")
+
+-- Adicionar funcionalidade de pesquisa
+local SearchInput = SearchBar.SearchInput
+
+AddConnection(SearchInput:GetPropertyChangedSignal("Text"), function()
+    local searchText = string.lower(SearchInput.Text)
+    
+    -- Percorre todas as tabs
+    for _, TabFrame in pairs(TabHolder:GetChildren()) do
+        if TabFrame:IsA("TextButton") then
+            local tabName = string.lower(TabFrame.Title.Text)
+            if searchText == "" then
+                -- Se a pesquisa estiver vazia, mostra todas as tabs
+                TabFrame.Visible = true
+            else
+                -- Mostra apenas as tabs que correspondem à pesquisa
+                TabFrame.Visible = string.find(tabName, searchText) and true or false
+            end
+        end
+    end
+end)
 
 return OrionLib
